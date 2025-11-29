@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 const User = require('./models/User');
 
 const patients = [
-  { name: 'John Smith', email: 'john.smith@email.com', password: 'patient123', bloodType: 'O+', disease: 'Hypertension', age: 45 },
+  { name: 'John Smith', email: 'john.smith@email.com', password: 't', bloodType: 'O+', disease: 'Hypertension', age: 45 },
   { name: 'Sarah Johnson', email: 'sarah.j@email.com', password: 'patient123', bloodType: 'A+', disease: 'Diabetes Type 2', age: 52 },
   { name: 'Michael Brown', email: 'michael.b@email.com', password: 'patient123', bloodType: 'B+', disease: 'Asthma', age: 38 },
   { name: 'Emily Davis', email: 'emily.d@email.com', password: 'patient123', bloodType: 'AB+', disease: 'None', age: 29 },

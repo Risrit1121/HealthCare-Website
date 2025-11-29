@@ -1,0 +1,236 @@
+{
+  "info": {
+    "name": "Healthcare API - Complete",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://gt57dmifrj.us-east-1.awsapprunner.com",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "1. Register Patient",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "if (pm.response.code === 201) {",
+              "    var jsonData = pm.response.json();",
+              "    pm.collectionVariables.set('token', jsonData.token);",
+              "}"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"password\": \"password123\",\n  \"phone\": \"1234567890\",\n  \"dateOfBirth\": \"1990-01-01\",\n  \"gender\": \"male\",\n  \"address\": \"123 Main St, New York\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/auth/register",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "auth", "register"]
+        }
+      }
+    },
+    {
+      "name": "2. Login",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "if (pm.response.code === 200) {",
+              "    var jsonData = pm.response.json();",
+              "    pm.collectionVariables.set('token', jsonData.token);",
+              "}"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"john@example.com\",\n  \"password\": \"password123\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/auth/login",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "auth", "login"]
+        }
+      }
+    },
+    {
+      "name": "3. Get All Doctors",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/doctors",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "doctors"]
+        }
+      }
+    },
+    {
+      "name": "4. Get Doctor by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/doctors/674a0e8f8c9d1234567890ab",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "doctors", "674a0e8f8c9d1234567890ab"]
+        }
+      }
+    },
+    {
+      "name": "5. Get All Patients (Auth Required)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/patients",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "patients"]
+        }
+      }
+    },
+    {
+      "name": "6. Get My Profile",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/patients/me",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "patients", "me"]
+        }
+      }
+    },
+    {
+      "name": "7. Book Appointment",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"doctorId\": \"674a0e8f8c9d1234567890ab\",\n  \"date\": \"2025-12-01\",\n  \"time\": \"10:00\",\n  \"reason\": \"Regular checkup\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/appointments",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "appointments"]
+        }
+      }
+    },
+    {
+      "name": "8. Get My Appointments",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/appointments/my-appointments",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "appointments", "my-appointments"]
+        }
+      }
+    },
+    {
+      "name": "9. Get All Appointments (Auth Required)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/appointments",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "appointments"]
+        }
+      }
+    },
+    {
+      "name": "10. Update Appointment Status",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"status\": \"confirmed\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/appointments/:id",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "appointments", ":id"],
+          "variable": [
+            {
+              "key": "id",
+              "value": "APPOINTMENT_ID_HERE"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
