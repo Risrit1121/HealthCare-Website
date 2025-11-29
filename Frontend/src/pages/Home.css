@@ -1,0 +1,156 @@
+.home-page {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+nav {
+  background: #2c3e50;
+  color: white;
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+}
+
+.hero {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 6rem 0;
+  text-align: center;
+}
+
+.hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero button {
+  background: white;
+  color: #667eea;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.services {
+  padding: 4rem 0;
+  background: #f8f9fa;
+}
+
+.services h2 {
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: 2rem;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.service-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.service-card h3 {
+  color: #667eea;
+  margin-bottom: 0.5rem;
+}
+
+.appointments {
+  padding: 4rem 0;
+}
+
+.appointments h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+input, select, textarea {
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+form button {
+  background: #667eea;
+  color: white;
+  border: none;
+  padding: 1rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background: #5568d3;
+}
+
+.response {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.response.success {
+  background: #d4edda;
+  color: #155724;
+}
+
+.response.error {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.contact {
+  background: #2c3e50;
+  color: white;
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.contact h2 {
+  margin-bottom: 1rem;
+}
